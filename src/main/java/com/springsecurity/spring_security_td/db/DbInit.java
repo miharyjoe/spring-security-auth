@@ -26,8 +26,8 @@ public class DbInit implements CommandLineRunner {
         this.userRepository.deleteAll();
 
         // Crete users
-        User loic = new User(6L,"Loic","Randria","loic@gmail.com","loic","azerty","USER","");
-        User admin = new User(7L,"admin","admin","admin@gmail.com","admin","admin123","ADMIN","ACCESS_TEST");
+        User loic = new User(6L,"Loic","Randria","loic@gmail.com","loic",passwordEncoder.encode("azerty"),"USER","");
+        User admin = new User(7L,"admin","admin","admin@gmail.com","admin",passwordEncoder.encode("admin123"),"ADMIN","ACCESS_TEST");
 
         List<User> users = Arrays.asList(loic,admin);
 
@@ -35,3 +35,4 @@ public class DbInit implements CommandLineRunner {
         this.userRepository.saveAll(users);
     }
 }
+
